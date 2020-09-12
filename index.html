@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>ISBN Validator</title>
+	
+</head>
+<body style="background-color: rgba(0, 250, 12, 0.2);">
+	<div> 
+      <center>  <h2>IWP LAB 2 </h2>
+        
+		<form>
+			<table>
+				<tr>
+					<td>
+						<label>
+							Enter the ISBN Number To cheack The Validation
+						</label>
+					</td>
+					<td>
+						<input type="text" name="isbnNum" id="myNo" maxlength="17">
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<input type="button" value=Validate onclick="isbnV()">
+					</td>
+				</tr>
+			</table>
+        </form>
+    </center> 
+    <center> 
+		<p id="outMes" style="color: rgba(255,0,0,1);"></p><br><br>
+		<p>
+			<b> A valid isbn13 contains the following parts separated by '-' or space (' ') :</b><br>
+			ISBN-13 prefix <span style="color: rgba(255,0,0,1);">(978 or 979)</span> <br>
+			1-5 digit group identifier (each digit in range [0-9])<br>
+			Publisher and title identifiers (can be subdivided into 2 parts, separated by '-' or ' ', having digits in range [0-9])<br>
+			Check digit (a single digit in range [0-9])
+		</p>
+
+		<h6>*Please enter isbn13, as isbn10 has been discontinued for years now.<br>
+        To convert isbn10 to isbn13, prepend '978-' to it.</h6>
+    </center>
+	</div>
+	<script type="text/javascript">
+		function isbnV()
+		{
+			var s = document.getElementById("myNo").value;
+		    var output = document.getElementById("outMes");
+			var regex=/^97[89][\-\s]?[0-9]{1,5}[\-\s]?[0-9]+[\-\s]?[0-9]+[\-\s]?[0-9]$/;
+			if(regex.test(s))
+			{
+				output.innerHTML = "VALID ISBN";
+				return true;
+			}
+			else{
+				output.innerHTML = "INVALID ISBN";
+				return false;
+			}
+
+		}
+	</script>
+</body>
+</html>
